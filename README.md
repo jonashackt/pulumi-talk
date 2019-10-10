@@ -11,6 +11,32 @@ Ask stackshare.io!!
 --> https://stackshare.io/pulumi/alternatives
 
 
+
+
+# What is Pulumi?
+
+#### Pulumi? YOUNG! 
+
+1.0 in 09/2019 https://www.heise.de/developer/meldung/Infrastructure-as-Code-Die-Plattform-Pulumi-erreicht-Version-1-0-4516570.html
+
+https://medium.com/@griggheo/good-devops-tech-skills-to-have-in-2019-75d7102eaf28
+
+
+#### JavaScript! --> Use "every" program language you like is currently simple marketing joke
+
+If you have a look at the docs, you'll soon notice, that the Pulumi JavaScript/Typescript docs are great - but choosing Python already is quite disillusioning. And isn't simply there! And no other language as well.
+
+But it's all on the roadmap:
+
+
+
+#### Roadmap
+
+Roadmap: https://github.com/pulumi/pulumi/wiki/Roadmap
+
+![backlog](backlog.png)
+
+
 #### Pulumi service backend architecture
 
 https://www.pulumi.com/docs/intro/concepts/state/
@@ -32,33 +58,38 @@ And Terraform and Pulumi could be used together a the same time: https://www.pul
 
 
 
-#### Comparing Infrastructure-as-Code tools is hard!
+# Comparing Infrastructure-as-Code tools is hard!
 
 !->; Provisioning vs. Configuration Management tools (see https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c?gi=cfad03e3531b)
 
-----> BUT: the lines blur! could do some CM tasks with Terraform, but you can do every single provisioning task with Ansible! (AND it's Master AND agentless!)
+__Configure existing servers: Ansible, Chef, Puppet, Saltstack__
+
+__Issues the creation of servers ("provisioning"): Cloudformation, Terraform, Pulumi__
+
+----> BUT: the lines blur! Let's have a look at Ansible's cloud modules: https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules.html
+
+could do some CM tasks with Terraform, but you can do every single provisioning task with Ansible!
 
 
 
-
-
-#### The academic comparison: "Mutable vs. Immutable infrastructure"
+### The central problem in IaC: configuration drift!
 
 See https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c#b264
 
 
+> The academic comparison: "Mutable vs. Immutable infrastructure"
 
 __Mutable: Ansible, Chef, Puppet, Saltstack__
 
 > For example, if you tell Ansible to install a new version of OpenSSL, it’ll run the software update on your existing servers and the changes will happen in-place. Over time, as you apply more and more updates, each server builds up a unique history of changes. This often leads to a phenomenon known as configuration drift,
 
---> simply: same servers, changed every time.
+--> simply: same servers, changed every time. (focus on configuration management)
 
 __Immutable: Pulumi, Terraform__
 
 > If you’re using a provisioning tool such as Terraform to deploy machine images created by Docker or Packer, then every “change” is actually a deployment of a new server (just like every “change” to a variable in functional programming actually returns a new variable). For example, to deploy a new version of OpenSSL, you would create a new image using Packer or Docker with the new version of OpenSSL already installed, deploy that image across a set of totally new servers, and then undeploy the old servers.
 
---> simply: new servers, every time.
+--> simply: new servers, every time. (focus on provisioning)
 
 __Opinion__: Like most academic classification, this doesn't apply in practice!
 
@@ -75,7 +106,7 @@ __-->__ this leads us to the conclusion:
 
 > So the state of the machine deviates, or drifts, from the baseline due to manual changes and updates. (see https://shadow-soft.com/ansible-idempotency-configuration-drift/)
 
-##### The core problem is configuration drift! And there are 2 approaches that could be taken to avoid it
+##### 2 approaches to address configuration drift
 
 1. Rebuild machine instances frequently so they don’t have much time to drift from the baseline.
 
@@ -85,9 +116,11 @@ __-->__ this leads us to the conclusion:
 
 
 
-##### Procedural vs. Declarative
+### What is the current state of my infrastructure?
 
 again see see https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c?gi=cfad03e3531b
+
+> Procedural vs. Declarative
 
 __Procedural: Chef, Ansible__
 
@@ -105,7 +138,7 @@ __Declarative: Terraform, Pulumi, CloudFormation, SaltStack, Puppet__
 
 Again like Mutalbe vs. Immutalbe: What is the core problem, that should be solved?
 
-###### It's the answer to: What is the current state of my infrastructure? 2 approaches again:
+###### To answer: "What is the current state of my infrastructure?" we have 2 approaches:
 
 1. Use a declarative approach and have a look into your code.
 
@@ -121,56 +154,74 @@ But in practice there are some good reasons why procedural approach is maybe bet
 
 
 
+### Nobody needs Masters!
+
+Another comparable feature of IaC tools is if they need a master server for storing state of your infrastructure or not:
+
+__Need a Master server: Chef, Puppet, SaltStack, Pulumi__
+
+(Note: most tools support Masterless modes, but then they rely on Agents with their own downsides)
+
+pros: 
+* central place to see status of your infrastructure
+* continuously enforce configuration in the background
+
+cons: 
+* extra infrastructure!
+* needs to be maintained
+* security: client-to-master and master-to-servers communication needs extra ports to be opened & extra authentication
 
 
-#### 2019 state
-
-https://medium.com/@griggheo/good-devops-tech-skills-to-have-in-2019-75d7102eaf28
+__Masterless: Ansible, Terraform, CloudFormation__
 
 
-#### Pulumi? YOUNG! 
-
-1.0 in 09/2019 https://www.heise.de/developer/meldung/Infrastructure-as-Code-Die-Plattform-Pulumi-erreicht-Version-1-0-4516570.html
+--> again the pros of a master server without the cons of this extra peace of infrastructure can be introduced in pratice by simply using a CI/CD server! No master needed!
 
 
-#### JavaScript! --> Use "every" program language you like is currently simple marketing joke
+### Nodoby wants Agents either!
 
-If you have a look at the docs, you'll soon notice, that the Pulumi JavaScript/Typescript docs are great - but choosing Python already is quite disillusioning. And isn't simply there! And no other language as well.
+__Need Agent on the managed servers to be installed up front: Chef, Puppet, SaltStack__
 
-But it's all on the roadmap:
+(Note: there are Agentless modes in these tools, but they don't support the full featureset)
+
+cons: 
+* bootstrapping: how to provision servers & install needed agent, if they have no agent installed?
+* maintainance of agent: update agent periodically, monitor it
+* security: same as with Master server
 
 
+__No Agent needed: Ansible, Terraform, Pulumi__
 
-#### Roadmap
-
-Roadmap: https://github.com/pulumi/pulumi/wiki/Roadmap
-
-![backlog](backlog.png)
+pros: no extra problems with bootstrapping, maintainance, security - no extra moving parts!
 
 
 
-#### What does reddit say?
-
-> The documentation is pretty incomplete
-
-https://www.reddit.com/r/devops/comments/bcdwsn/pulumi/
 
 
-##### Is YAML really bad? Or how to transform an organisation with classic Sysadmins
+### Is YAML really bad? Or how to transform an organisation with classic Sysadmins
 
 > I know some of the guys here do not like YAML. However, it has its place. Not everyone is completely dev minded. YAML in my opinion is a nice middle ground for more ops guys that are gaining more Dev mentality.
  !!! -> Puppet had the problem with code also (abstraction, classes and so on...)
+ (reddit: https://www.reddit.com/r/devops/comments/bcdwsn/pulumi/)
 
 There are maybe not only god-like code cracks out there! Imaginge the classic Sysadmin -> maybe you could easily "infect" somebody like this to use a simple YAML-based approach, that could be written with simple editors. Coming around the corner with a full blown language could maybe overwhelm people?!
 
 
-##### Google isn't Pulumi's friend right now: Ansible xyz googlen__ vs. __Pulumi xyz googlen
+### The theoretic argument of speed
+
+Google `pulumi ec2 module python` vs `ansible ec2 module` 
+
+> This content is derived from terraform...
+
+ok: google `pulumi ec2 module`
+
+> The documentation is pretty incomplete
 
 > What would help is better docs - last I checked the docs were not good at all and in a lot of typescript and nodejs. I feel more people who would be doing this would be more comfortable with python and the docs for python were weak. For something like this you need great docs.
   I know there is a guy in a thread who is tired of ansible but man are the docs pretty good. You can literally google 'ansible <thing> module' and the page comes up. I'll look at it again when the docs are better.
+ (reddit: https://www.reddit.com/r/devops/comments/bcdwsn/pulumi/)
 
-
-#### Large Community vs Small Community
+### Large Community vs Small Community
 
 ![comparison-community-common-iac-tools](comparison-community-common-iac-tools.png)
 
