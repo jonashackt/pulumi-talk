@@ -11,8 +11,6 @@ Ask stackshare.io!!
 --> https://stackshare.io/pulumi/alternatives
 
 
-
-
 # What is Pulumi?
 
 #### Pulumi? YOUNG! 
@@ -21,12 +19,6 @@ Ask stackshare.io!!
 
 https://medium.com/@griggheo/good-devops-tech-skills-to-have-in-2019-75d7102eaf28
 
-
-#### JavaScript! --> Use "every" program language you like is currently simple marketing joke
-
-If you have a look at the docs, you'll soon notice, that the Pulumi JavaScript/Typescript docs are great - but choosing Python already is quite disillusioning. And isn't simply there! And no other language as well.
-
-But it's all on the roadmap:
 
 
 
@@ -77,7 +69,7 @@ could do some CM tasks with Terraform, but you can do every single provisioning 
 See https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c#b264
 
 
-> The academic comparison: "Mutable vs. Immutable infrastructure"
+> "The academic comparison": Mutable vs. Immutable infrastructure
 
 __Mutable: Ansible, Chef, Puppet, Saltstack__
 
@@ -87,7 +79,7 @@ __Mutable: Ansible, Chef, Puppet, Saltstack__
 
 __Immutable: Pulumi, Terraform__
 
-> If you’re using a provisioning tool such as Terraform to deploy machine images created by Docker or Packer, then every “change” is actually a deployment of a new server (just like every “change” to a variable in functional programming actually returns a new variable). For example, to deploy a new version of OpenSSL, you would create a new image using Packer or Docker with the new version of OpenSSL already installed, deploy that image across a set of totally new servers, and then undeploy the old servers.
+> If you’re using a provisioning tool such as Terraform to deploy machine images created by Docker or Packer, then every “change” is actually a deployment of a new server. For example, to deploy a new version of OpenSSL, you would create a new image using Packer or Docker with the new version of OpenSSL already installed, deploy that image across a set of totally new servers, and then undeploy the old servers.
 
 --> simply: new servers, every time. (focus on provisioning)
 
@@ -100,9 +92,10 @@ __Opinion__: Like most academic classification, this doesn't apply in practice!
    --> No commands on the systems possible right now with Pulumi!!! :((( (see https://github.com/pulumi/pulumi/issues/127 & https://github.com/pulumi/pulumi/issues/99 & https://github.com/pulumi/pulumi/issues/1691)
    --> It's definitely NOT possible to configure a system/server/container whatsoever with Pulumi!!!
 3. If you choose Ansible with it's concept of idempotency! Run your commands once or multiple times: the result will be the same!
+4. If you choose "shiny immutable infra focuses tool" + "servertemplating", who and what does the term "servertemplating" mean? Doesn't it mean, that you pull up a virtual machine/container and configure stuff or install software on it, then pack the result into an image? Ah well, that's nice! So you're doing immutable infrastructure with configuration management tools?! :))))
 
+That means in most situations you will use multiple tools to get the job done. But this also leads to the problem, that your team has to learn and support multiple IaC tools. I'am personally a fan of reducing the tools you need to learn and master by choosing a framework, that is able to do most of the stuff needed throughout infrastructure development.
 
-__-->__ this leads us to the conclusion: 
 
 > So the state of the machine deviates, or drifts, from the baseline due to manual changes and updates. (see https://shadow-soft.com/ansible-idempotency-configuration-drift/)
 
@@ -190,7 +183,7 @@ cons:
 * security: same as with Master server
 
 
-__No Agent needed: Ansible, Terraform, Pulumi__
+__No Agent needed (client-only): Ansible, Terraform, Pulumi__
 
 pros: no extra problems with bootstrapping, maintainance, security - no extra moving parts!
 
@@ -220,6 +213,16 @@ ok: google `pulumi ec2 module`
 > What would help is better docs - last I checked the docs were not good at all and in a lot of typescript and nodejs. I feel more people who would be doing this would be more comfortable with python and the docs for python were weak. For something like this you need great docs.
   I know there is a guy in a thread who is tired of ansible but man are the docs pretty good. You can literally google 'ansible <thing> module' and the page comes up. I'll look at it again when the docs are better.
  (reddit: https://www.reddit.com/r/devops/comments/bcdwsn/pulumi/)
+
+
+#### JavaScript! --> Use "every" program language you like is currently simple marketing joke
+
+If you have a look at the docs, you'll soon notice, that the Pulumi JavaScript/Typescript docs are great - but choosing Python already is quite disillusioning. And isn't simply there! And no other language as well.
+
+And one question: Is it really a good idea to have a full blown programming language available? Do you remember the Design Patterns guys? I once had to integrate a framework, a mathematician build who bought a design pattern book before O_O
+
+__Meme: Mathematician__
+
 
 ### Large Community vs Small Community
 
