@@ -73,6 +73,24 @@ __Issues the creation of servers ("provisioning"): Cloudformation, Terraform, Pu
 could do some CM tasks with Terraform, but you can do every single provisioning task with Ansible!
 
 
+### Provision? Yes! Configure? No!
+
+Imagine your EC2 instance is running, now we want to install some sort of software on it. How do we issue shell commands and the like with Pulumi?
+
+The answer is: NOT AT ALL! There's currently no way to do this (see https://github.com/pulumi/pulumi/issues/99). 
+
+Pulumi website explains why (https://www.pulumi.com/docs/intro/vs/chef_puppet_etc/): 
+
+> Chef, Puppet, Ansible, and Salt are all popular configuration management tools. These tools help you install and manage software on existing cloud infrastructure, either for bootstrapping a virtual machine, or patching one. They do not attempt to solve the problem of provisioning or updating infrastructure, containers, or serverless resources.
+  Pulumi is fundamentally different than these tools and works great alongside them. 
+
+Taking Ansible as the current leader of IaC tools, the quote "They do not attempt to solve the problem of provisioning or updating infrastructure" is simply a lie - [Ansible has a whole bunch of Cloud modules available](https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules.html) and is able to provision or update nearly anything. 
+
+But the last part is interesting "Pulumi is fundamentally different than these tools and works great alongside them." --> so having the need to configure a system, you should use something like Ansible!
+
+Ah interesting... let's have a look into other aspects!
+
+
 
 ### The central problem in IaC: configuration drift!
 
