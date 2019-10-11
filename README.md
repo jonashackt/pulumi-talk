@@ -20,6 +20,16 @@ Ask stackshare.io!!
 https://medium.com/@griggheo/good-devops-tech-skills-to-have-in-2019-75d7102eaf28
 
 
+In contrast to other Infrastructure-as-Code tools, Pulumi uses real programming languages instead of YAML to define infrastructure code:
+
+> At the center of Pulumi is an open-source cloud object model & an evaluation runtime (https://www.pulumi.com/docs/intro/concepts/)
+
+This cloud object model is language agnostic to support multiple programming languages at the same time ([currently Node.js/JavaScript & Python. And there's a Preview for Go and the possibility to implement your own Language](https://www.pulumi.com/docs/intro/languages/)). The evaluation runtime is knows about the cloud resources and how to plan, manage & execute them.
+
+Pulumi Project is a folder with a `Pulumi.yaml` - create with `pulumi new`. 
+
+Pulumi Stacks are like stages (dev, stage, production).
+
 
 
 #### Roadmap
