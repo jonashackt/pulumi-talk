@@ -247,6 +247,8 @@ ok: google `pulumi ec2 module`
 
 If you have a look at the docs, you'll soon notice, that the Pulumi JavaScript/Typescript docs are great - but choosing Python already is quite disillusioning. And isn't simply there! And no other language as well.
 
+Simply have a look into the example projects: https://github.com/pulumi/examples and focus on the `language` column
+
 And one question: Is it really a good idea to have a full blown programming language available? Do you remember the Design Patterns guys? I once had to integrate a framework, a mathematician build who bought a design pattern book before O_O
 
 __Meme: Mathematician__
@@ -257,3 +259,19 @@ __Meme: Mathematician__
 ![comparison-community-common-iac-tools](comparison-community-common-iac-tools.png)
 
 > Ansible leads the pack in terms of popularity
+
+
+
+### Test-driven Development with Pulumi
+
+https://www.pulumi.com/blog/testing-your-infrastructure-as-code-with-pulumi/
+
+https://www.pulumi.com/blog/tag/testing/ --> 1 article! :(
+
+https://www.pulumi.com/blog/unit-testing-infrastructure-in-nodejs-and-mocha/
+
+Discussion to test harnesses ended in this https://github.com/pulumi/pulumi/issues/1902
+
+There's a 1 star plugin for [Chef's TDD harness tool kitchenCI](https://kitchen.ci/): https://github.com/jacoblearned/kitchen-pulumi
+
+
