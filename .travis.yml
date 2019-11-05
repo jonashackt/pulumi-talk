@@ -6,8 +6,6 @@ before_install:
   - pandoc --version
 
 script:
-  # create docs directory for pandoc output
-  - mkdir docs
   # Generate reveal.js powered HTML from Markdown
   - pandoc --standalone -t revealjs -o docs/index.html presentation.md -V revealjs-url=https://revealjs.com -V theme=solarized
 
