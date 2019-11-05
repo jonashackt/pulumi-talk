@@ -4,6 +4,7 @@
 
 # Pandoc output
 *.html
+docs
 
 
 # Byte-compiled / optimized / DLL files
