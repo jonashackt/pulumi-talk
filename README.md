@@ -1,4 +1,7 @@
 # pulumi-talk
+[![Build Status](https://travis-ci.org/jonashackt/pulumi-talk.svg?branch=master)](https://travis-ci.org/jonashackt/pulumi-talk)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/jonashackt/pulumi-talk/blob/master/LICENSE)
+
 Notes and links for my talk on Pulumi
 
 
@@ -252,6 +255,11 @@ Simply have a look into the example projects: https://github.com/pulumi/examples
 And one question: Is it really a good idea to have a full blown programming language available? Do you remember the Design Patterns guys? I once had to integrate a framework, a mathematician build who bought a design pattern book before O_O
 
 __Meme: Mathematician__
+
+
+### Second broken promise: "Multi-Cloud"
+
+See the examples again: https://github.com/pulumi/examples I see AWS, AWS, AWS... an only single Azure, Kubernetes, GCP
 
 
 ### Large Community vs Small Community
