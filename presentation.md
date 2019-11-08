@@ -1,6 +1,10 @@
-% Title
-% Name
-% yyyy/mm/dd
+---
+author: Benji Fisher
+title: 'DevOps for Presentations: Markdown, Pandoc, Reveal.js, GitLab CI'
+date: May 22, 2019
+theme: sky
+---
+
 
 # Header1
 

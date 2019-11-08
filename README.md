@@ -1,8 +1,13 @@
 # pulumi-talk
-[![Build Status](https://travis-ci.org/jonashackt/pulumi-talk.svg?branch=master)](https://travis-ci.org/jonashackt/pulumi-talk)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/jonashackt/pulumi-talk/blob/master/LICENSE)
 
 Notes and links for my talk on Pulumi
+
+
+
+
+
+
 
 
 #### Why Apples vs. Bananas?
