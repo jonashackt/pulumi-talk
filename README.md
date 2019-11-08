@@ -3,7 +3,15 @@
 
 Notes and links for my talk on Pulumi
 
+### Talk snippets
 
+##### Create Projects Demo
+
+```
+mkdir quickstart && cd quickstart
+
+pulumi new aws-typescript
+```
 
 
 
