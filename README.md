@@ -8,7 +8,7 @@ Notes and links for my talk on Pulumi
 ##### Create Projects Demo
 
 ```
-mkdir quickstart && cd quickstart
+mkdir containerconf && cd containerconf
 
 pulumi new aws-typescript
 ```
