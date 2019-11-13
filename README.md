@@ -3,6 +3,8 @@
 
 Notes and links for my talk on Pulumi
 
+Talk is available as PDF: [20191113-Pulumi-vs-Ansible-ContainerConf2019.pdf](20191113-Pulumi-vs-Ansible-ContainerConf2019.pdf)
+
 ### Talk snippets
 
 ##### Create Projects Demo
