@@ -11,9 +11,60 @@ Notes and links for my talk on Pulumi
 mkdir containerconf && cd containerconf
 
 pulumi new aws-typescript
+
+code .
+
+pulumi up
+
+pulumi destroy
+
+pulumi stack rm
 ```
 
 
+##### Configuration Drift Demo (Python)
+
+Open console and enter `pipenv shell`.
+
+Open projects in IntelliJ
+
+Show `__main__.py` first.
+
+```
+pipenv install
+
+pulumi destroy --yes
+
+ansible-playbook keypair.yml
+
+pulumi up
+
+ansible-galaxy install -r requirements.yml -p roles/
+
+ansible-playbook playbook.yml
+
+py.test -v tests/test_docker.py --ssh-identity-file=.ec2ssh/pulumi_key --ssh-config=tests/pytest_ssh_config --hosts='ssh://'$(pulumi stack output publicIp)
+
+pulumi destroy --yes
+```
+
+
+##### Fargate ECS Spring Boot Vue.js Demo (Typescript)
+
+
+Open projects in IntelliJ
+
+Show `index.ts` first.
+
+```
+npm install
+
+pulumi destroy --yes
+
+pulumi up
+
+pulumi destroy --yes
+```
 
 
 
