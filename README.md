@@ -5,6 +5,13 @@ Notes and links for my talk on Pulumi
 
 Talk is available as PDF: [20191113-Pulumi-vs-Ansible-ContainerConf2019.pdf](20191113-Pulumi-vs-Ansible-ContainerConf2019.pdf)
 
+Example projects used in the talk:
+
+https://github.com/jonashackt/pulumi-python-aws-ansible
+
+https://github.com/jonashackt/pulumi-typescript-aws-fargate
+
+
 ### Talk snippets
 
 ##### Create Projects Demo
