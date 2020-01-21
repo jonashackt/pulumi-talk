@@ -17,7 +17,7 @@ https://github.com/jonashackt/pulumi-typescript-aws-fargate
 ##### Create Projects Demo
 
 ```
-mkdir containerconf && cd containerconf
+mkdir devopsilmenau && cd devopsilmenau
 
 pulumi new aws-typescript
 
