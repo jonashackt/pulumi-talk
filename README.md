@@ -72,6 +72,8 @@ pulumi destroy --yes
 
 pulumi up
 
+pulumi stack output url
+
 pulumi destroy --yes
 ```
 
