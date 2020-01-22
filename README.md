@@ -73,7 +73,11 @@ pulumi destroy --yes
 pulumi up
 
 pulumi stack output url
+```
 
+Open Browser with `url` output incl. port 8098
+
+```
 pulumi destroy --yes
 ```
 
